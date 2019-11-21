@@ -1,0 +1,11 @@
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/obj/Debug/netcoreapp3.0/Tic Tac Toe.csprojAssemblyReference.cache
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/obj/Debug/netcoreapp3.0/Tic Tac Toe.AssemblyInfoInputs.cache
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/obj/Debug/netcoreapp3.0/Tic Tac Toe.AssemblyInfo.cs
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe.deps.json
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe.runtimeconfig.json
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe.runtimeconfig.dev.json
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe.dll
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/bin/Debug/netcoreapp3.0/Tic Tac Toe.pdb
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/obj/Debug/netcoreapp3.0/Tic Tac Toe.dll
+/Users/cecilia.yin/RiderProjects/Tic Tac Toe/Tic Tac Toe/obj/Debug/netcoreapp3.0/Tic Tac Toe.pdb
