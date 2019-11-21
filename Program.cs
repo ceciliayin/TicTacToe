@@ -5,18 +5,13 @@ namespace Tic_Tac_Toe
 {
     class TicTacToe
     {
-        static char[] boardArray = {'0', '.', '.', '.', '.', '.', '.', '.', '.','.'};
+        static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.'};
         private static string _position;
         private static int _choice;
-        
         static char Player1 = char.Parse("X");
         static char Player2 = char.Parse("O");
-
         private static int _count = 1;
-
         private static int _result;
-
-
         static void Main(string[] args)
         {
             do
@@ -96,9 +91,7 @@ namespace Tic_Tac_Toe
         private static void Board()
         {
             Console.WriteLine("  {0}    {1}    {2}", boardArray[1], boardArray[2], boardArray[3]);
-
             Console.WriteLine("  {0}    {1}    {2}", boardArray[4], boardArray[5], boardArray[6]);
-
             Console.WriteLine("  {0}    {1}    {2}", boardArray[7], boardArray[8], boardArray[9]);
         }
 
@@ -126,7 +119,6 @@ namespace Tic_Tac_Toe
             {
                 return 1;
             }
-            
 
             if (boardArray[7] == Player1 && boardArray[8] == Player1 && boardArray[9] == Player1)
             {
