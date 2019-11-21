@@ -5,16 +5,16 @@ namespace Tic_Tac_Toe
 {
     class TicTacToe
     {
-        static char[] boardArray = {'0', '.', '.', '.', '.', '.', '.', '.', '.','.'}; 
-        static string _position;
-        static int _choice;
+        static char[] boardArray = {'0', '.', '.', '.', '.', '.', '.', '.', '.','.'};
+        private static string _position;
+        private static int _choice;
         
         static char Player1 = char.Parse("X");
         static char Player2 = char.Parse("O");
 
-        static int _count = 1;
+        private static int _count = 1;
 
-        static int _result;
+        private static int _result;
 
 
         static void Main(string[] args)
