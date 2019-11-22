@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading;
 
 namespace Tic_Tac_Toe
-{
+{ 
     class TicTacToe
     {
         static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.','.'};
@@ -80,7 +80,6 @@ namespace Tic_Tac_Toe
 
             //calling win function to check if winning
             while (result != 1 && result != -1);
-
             {
                 Console.Clear();
                 PrintBoard();
@@ -205,7 +204,7 @@ namespace Tic_Tac_Toe
                 }
             }
 
-            if(_position==coordinatesStrings[10])
+            if (_position==coordinatesStrings[10])
             {
                 return 0;
             }
