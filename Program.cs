@@ -1,94 +1,109 @@
 ﻿using System;
 using System.Net;
+using System.Threading;
 
 namespace Tic_Tac_Toe
 {
     class TicTacToe
     {
-        static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.'};
+        static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.','.'}; 
+        
         private static string _position;
-        private static int _choice;
         static char Player1 = char.Parse("X");
         static char Player2 = char.Parse("O");
-        private static int _count = 1;
-        private static int _result;
+
         static void Main(string[] args)
         {
+            int result;
+            int roundCounter = 1;
+            int choiceOfPlayer;
+            
+            
             do
             {
-                Console.Clear();
+                Console.WriteLine("\n");
                 Console.WriteLine("Welcome to Tic Tac Toe!");
                 Console.WriteLine("Here's the current board:");
-                Board();
+                PrintBoard();
 
-                if (_count % 2 == 0)
-                {
+                if (roundCounter % 2 == 0)
+                {    
                     Console.WriteLine("Player 2 enter a coord x,y to place your X or enter 'q' to give up: ");
-                    _position = Console.ReadLine();
-                    PositionCoordinate();
-                    if (boardArray[_choice] != Player1 && boardArray[_choice] != Player2)
-                    {   
-                        Console.WriteLine("Move accepted, here's the current board: ");
-                        boardArray[_choice] = Player2;
-                        Board();
-                        _count++;
-                    }
-                    else if (boardArray[_choice] == Player1 || boardArray[_choice] == Player2)
-                    {
-                        Console.WriteLine("Oh no, a piece is already at this place! Try again..");
-                    }
                 }
-                
-                if(_count%2 !=0) 
+
+                else
                 {
                     Console.WriteLine("Player 1 enter a coord x,y to place your X or enter 'q' to give up: ");
-                    _position = Console.ReadLine();
-                    PositionCoordinate();
-                    if (boardArray[_choice] != Player1 && boardArray[_choice] != Player2)
-                    {
-                        Console.WriteLine("Move accepted, here's the current board: ");
-                        boardArray[_choice] = Player1;
-                        Board();
-                        _count++;
-                    }
-                    else if (boardArray[_choice] == Player1 || boardArray[_choice] == Player2)
-                    {
-                        Console.WriteLine("Oh no, a piece is already at this place! Try again..");
-                    }
                 }
                 
-                _result = CheckIfThePlayerWin();
+                _position = Console.ReadLine(); 
+                choiceOfPlayer = GetArrayIndex();
+
+                if (choiceOfPlayer == 10)
+                {
+                    Console.WriteLine("The position coordinate is invalid, try again......");
+                    Console.WriteLine("\n");
+                    Thread.Sleep(2000);
+                    
+                }
+
+                if (choiceOfPlayer == 0)
+                {    
+                    roundCounter++;
+                    Console.WriteLine("Player {0} has given up for this round",(roundCounter % 2) + 1);
+                    roundCounter++;
+                }
+
+                if (boardArray[choiceOfPlayer] != Player1 && boardArray[choiceOfPlayer] != Player2 )
+                {
+                    if (roundCounter % 2 == 0)
+                    {
+                        boardArray[choiceOfPlayer] = Player2;
+                    }
+
+                    else
+                    {
+                        boardArray[choiceOfPlayer] = Player1;
+                    }
+                    
+                    Console.WriteLine("Move accepted, here's the current board: ");
+                    PrintBoard();
+                    roundCounter++;
+                }
+                else if (boardArray[choiceOfPlayer] == Player1 && choiceOfPlayer !=0)
+                { 
+                    Console.WriteLine("Oh no, a piece is already at this place! Try again..");
+                }
+                else if (boardArray[choiceOfPlayer] == Player2 && choiceOfPlayer !=0)
+                { 
+                    Console.WriteLine("Oh no, a piece is already at this place! Try again..");
+                }
+                
+                result = CheckIfThePlayerWin();
             }
 
             //calling win function to check if winning
-            while (_result != 1 && _result != -1);
+            while (result != 1 && result != -1);
+
             {
                 Console.Clear();
-                Board();
+                PrintBoard();
 
-
-                if (_result == 0 && _choice == 0)
+                if (result == 1)
                 {
-                    Console.WriteLine("Player{0} has given up", (_count %2)+1 );
-                }
-                
-                if (_result == 1)
-                {
-                    Console.WriteLine("Move accepted, well done Player {0} won the game!", (_count % 2) + 1);
+                    Console.WriteLine("Move accepted, well done Player {0} won the game!", (roundCounter % 2) + 1);
                 }
 
-                if (_result == -1)
+                if (result == -1)
                 {
                     Console.WriteLine("Draw");
                 }
             }
-            
             Console.ReadLine();
         }
-        
 
 
-        private static void Board()
+        private static void PrintBoard()
         {
             Console.WriteLine("  {0}    {1}    {2}", boardArray[1], boardArray[2], boardArray[3]);
             Console.WriteLine("  {0}    {1}    {2}", boardArray[4], boardArray[5], boardArray[6]);
@@ -108,7 +123,6 @@ namespace Tic_Tac_Toe
             {
                 return 1;
             }
-            
 
             if (boardArray[4] == Player1 && boardArray[5] == Player1 && boardArray[6] == Player1)
             {
@@ -185,10 +199,9 @@ namespace Tic_Tac_Toe
             } 
             
             return 0;
-            
         }
 
-        private static int PositionCoordinate()
+        private static int GetArrayIndex()
         {
             //check the user input position
             string pos1="1,1";
@@ -204,46 +217,45 @@ namespace Tic_Tac_Toe
 
             if (_position==pos1)
             {
-                _choice = 1;
+                return 1;
             }
             if (_position==pos2)
             {
-                _choice = 2;
+                return 2;
             }
             if (_position==pos3)
             {
-                _choice = 3;
+                return 3;
             }
             if (_position==pos4)
             {
-                _choice = 4;
+                return 4;
             }
             if (_position==pos5)
             {
-                _choice = 5;
+                return 5;
             }
             if (_position==pos6)
             {
-                _choice = 6;
+                return 6;
             }
             if (_position==pos7)
             {
-                _choice = 7;
+                return 7;
             }
             if (_position==pos8)
             {
-                _choice = 8;
+                return 8;
             }
             if (_position==pos9)
             {
-                _choice = 9;
+                return 9;
             }
             if (_position==pos10)
             {
-                _choice = 0;
+                return 0;
             }
-
-            return _choice;
+            return 10;
         }
     }
 }
