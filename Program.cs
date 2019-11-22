@@ -6,8 +6,7 @@ namespace Tic_Tac_Toe
 {
     class TicTacToe
     {
-        static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.','.'}; 
-        
+        static char[] boardArray = {'.', '.', '.','.','.', '.', '.','.','.','.'};
         private static string _position;
         static char Player1 = char.Parse("X");
         static char Player2 = char.Parse("O");
@@ -45,13 +44,13 @@ namespace Tic_Tac_Toe
                 }
 
                 if (choiceOfPlayer == 0)
-                {    
+                {   
                     roundCounter++;
-                    Console.WriteLine("Player {0} has given up for this round",(roundCounter % 2) + 1);
-                    roundCounter++;
+                    Console.WriteLine("Player {0} has given up for this round",(roundCounter % 2)+1 );
+                    roundCounter=roundCounter+2;
                 }
 
-                if (boardArray[choiceOfPlayer] != Player1 && boardArray[choiceOfPlayer] != Player2 )
+                if (choiceOfPlayer != 0 && boardArray[choiceOfPlayer] != Player1 && boardArray[choiceOfPlayer] != Player2 )
                 {
                     if (roundCounter % 2 == 0)
                     {
@@ -97,7 +96,6 @@ namespace Tic_Tac_Toe
                 }
             }
         }
-
 
         private static void PrintBoard()
         {
@@ -195,7 +193,7 @@ namespace Tic_Tac_Toe
             
             return 0;
         }
-
+        
         private static int GetArrayIndex()
         {
             var coordinatesStrings = new string[11] {"0,0", "1,1", "1,2", "1,3", "2,1", "2,2", "2,3", "3,1", "3,2", "3,3","q"};
