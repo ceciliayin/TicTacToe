@@ -16,9 +16,7 @@ namespace Tic_Tac_Toe
         {
             int result;
             int roundCounter = 1;
-            int choiceOfPlayer;
-            
-            
+
             do
             {
                 Console.WriteLine("\n");
@@ -37,14 +35,13 @@ namespace Tic_Tac_Toe
                 }
                 
                 _position = Console.ReadLine(); 
-                choiceOfPlayer = GetArrayIndex();
+                var choiceOfPlayer = GetArrayIndex();
 
                 if (choiceOfPlayer == 10)
                 {
                     Console.WriteLine("The position coordinate is invalid, try again......");
                     Console.WriteLine("\n");
                     Thread.Sleep(2000);
-                    
                 }
 
                 if (choiceOfPlayer == 0)
@@ -99,7 +96,6 @@ namespace Tic_Tac_Toe
                     Console.WriteLine("Draw");
                 }
             }
-            Console.ReadLine();
         }
 
 
@@ -112,7 +108,6 @@ namespace Tic_Tac_Toe
 
         private static int CheckIfThePlayerWin()
         {
-          
             //check the horizontal condition
             if (boardArray[1] == Player1 && boardArray[2] == Player1 && boardArray[3]==Player1)
             {
@@ -203,59 +198,20 @@ namespace Tic_Tac_Toe
 
         private static int GetArrayIndex()
         {
-            //check the user input position
-            string pos1="1,1";
-            string pos2="1,2";
-            string pos3="1,3";
-            string pos4="2,1";
-            string pos5="2,2";
-            string pos6="2,3";
-            string pos7="3,1";
-            string pos8="3,2";
-            string pos9="3,3";
-            string pos10 = "q";
+            var coordinatesStrings = new string[11] {"0,0", "1,1", "1,2", "1,3", "2,1", "2,2", "2,3", "3,1", "3,2", "3,3","q"};
+            for (int i = 1; i < 10; i++)
+            { 
+                if (_position == coordinatesStrings[i])
+                {
+                    return i;
+                }
+            }
 
-            if (_position==pos1)
-            {
-                return 1;
-            }
-            if (_position==pos2)
-            {
-                return 2;
-            }
-            if (_position==pos3)
-            {
-                return 3;
-            }
-            if (_position==pos4)
-            {
-                return 4;
-            }
-            if (_position==pos5)
-            {
-                return 5;
-            }
-            if (_position==pos6)
-            {
-                return 6;
-            }
-            if (_position==pos7)
-            {
-                return 7;
-            }
-            if (_position==pos8)
-            {
-                return 8;
-            }
-            if (_position==pos9)
-            {
-                return 9;
-            }
-            if (_position==pos10)
+            if(_position==coordinatesStrings[10])
             {
                 return 0;
             }
-            return 10;
+            return 10; 
         }
     }
 }
