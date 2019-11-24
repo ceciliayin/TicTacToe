@@ -45,7 +45,7 @@ namespace Tic_Tac_Toe
                 {   
                     roundCounter++;
                     PrintTheMessageWithNumber("Player {0} has given up for this round",(roundCounter % 2)+1 );
-                    roundCounter=roundCounter+2;
+                    roundCounter += 2;
                 }
 
                 if (choiceOfPlayer != 0 && boardArray[choiceOfPlayer] != player1 && boardArray[choiceOfPlayer] != player2 )
@@ -130,7 +130,6 @@ namespace Tic_Tac_Toe
                 {
                     return 1;
                 }
-                
             }
             
             //check diagonal condition
