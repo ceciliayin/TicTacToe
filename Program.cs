@@ -45,7 +45,7 @@ namespace Tic_Tac_Toe
                 if (choiceOfPlayer == 0)
                 {   
                     roundCounter++;
-                    Console.WriteLine("Player {0} has given up for this round",(roundCounter % 2)+1 );
+                    PrintTheMessageWithNumber("Player {0} has given up for this round",(roundCounter % 2)+1 );
                     roundCounter=roundCounter+2;
                 }
 
@@ -85,7 +85,7 @@ namespace Tic_Tac_Toe
 
                 if (result == 1)
                 {
-                    Console.WriteLine("Move accepted, well done Player {0} won the game!", (roundCounter % 2) + 1);
+                    PrintTheMessageWithNumber("Move accepted, well done Player {0} won the game!", (roundCounter % 2) + 1);
                 }
 
                 if (result == -1)
@@ -99,6 +99,12 @@ namespace Tic_Tac_Toe
         { 
             Console.WriteLine(message);
         }
+        
+        private static void PrintTheMessageWithNumber(string message, int roundCounter)
+        { 
+            Console.WriteLine(message,roundCounter);
+        }
+        
         private static void PrintBoard(char[] boardArray)
         {
             Console.WriteLine("  {0}    {1}    {2}", boardArray[1], boardArray[2], boardArray[3]);
