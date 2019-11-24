@@ -16,8 +16,7 @@ namespace Tic_Tac_Toe
             {    
                 const char player1 = 'X';
                 const char player2 = 'O';
-                
-                PrintTheMessage("\n");
+
                 PrintTheMessage("Welcome to Tic Tac Toe!");
                 PrintTheMessage("Here's the current board:");
                 PrintBoard(boardArray);
