@@ -42,10 +42,7 @@ namespace Tic_Tac_Toe
                 roundCounter++;
                 
                 result = CheckIfThePlayerWin(player1, player2, boardArray);
-            }
-
-            //calling win function to check if winning
-            while (result != 1 && result != -1);
+            }while (result != 1 && result != -1);
             {
                 CheckIfConditionIsWinning(result, roundCounter, boardArray);
             }
@@ -190,6 +187,5 @@ namespace Tic_Tac_Toe
                 PrintTheMessage("Draw");
             }
         }
-        
     }
 }
