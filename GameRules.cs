@@ -5,12 +5,14 @@ namespace Tic_Tac_Toe
     public interface IGameRules
     {
         int CheckIfThePlayerWin(char player1, char player2, char[] boardArray);
-        void CheckIfConditionIsWinning(int result, int roundCounter, char[] boardArray);
+        void CheckIfConditionIsWinning(int result, int roundCounter);
     }
 
     public class GameRules : IGameRules
-    {  
-        Print _printTheMessage=new Print();
+    {
+        
+        IPrint _printTheMessage=new Print();
+        
         public int CheckIfThePlayerWin(char player1, char player2, char[] boardArray)
         {    
             //check the horizontal condition
@@ -61,7 +63,7 @@ namespace Tic_Tac_Toe
             return 0; 
         }
     
-        public void CheckIfConditionIsWinning(int result, int roundCounter, char[] boardArray)
+        public void CheckIfConditionIsWinning(int result, int roundCounter)
         {
             if (result == 1)
             {

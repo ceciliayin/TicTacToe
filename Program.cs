@@ -10,15 +10,15 @@ namespace Tic_Tac_Toe
         
         public static void Main(string[] args)
         {
-            Board newBoard = new Board(); 
-            Print printTheMessage=new Print();
-            GameRules newGameRules= new GameRules();
+            IBoard newBoard = new Board();
+            IPrint printTheMessage=new Print();
+            IGameRules newGameRules= new GameRules();
 
             int result;
             int roundCounter = 1;
 
             printTheMessage.PrintInitMessage();
-            newBoard.PrintBoard(newBoard.BoardArray);
+            newBoard.PrintBoard();
 
             do
             {
@@ -32,20 +32,22 @@ namespace Tic_Tac_Toe
                     printTheMessage.PrintTheMessage("\n");
                     Thread.Sleep(2000);
                 }
-                
-                if (newBoard.CheckIfPlaceIsTaken(Player1, Player2, newBoard.BoardArray, roundCounter, choiceOfPlayer))
+
+                if (newBoard.CheckIfPlaceIsTaken(Player1, Player2, roundCounter, choiceOfPlayer))
                 {
                     roundCounter++;
                 }
-                
-                newBoard.UpdateTokens(Player1, Player2, newBoard.BoardArray, roundCounter, choiceOfPlayer);
+
+                newBoard.UpdateTokens(Player1, Player2, roundCounter, choiceOfPlayer);
                 roundCounter++;
-                newBoard.PrintBoard(newBoard.BoardArray);
-                result = newGameRules.CheckIfThePlayerWin(Player1,Player2, newBoard.BoardArray);
+                newBoard.PrintBoard();
+                result = newGameRules.CheckIfThePlayerWin(Player1,Player2, newBoard.GetBoardArray());
+                
 
             } while (result==0);
+
             {
-                newGameRules.CheckIfConditionIsWinning(result,roundCounter,newBoard.BoardArray);
+                newGameRules.CheckIfConditionIsWinning(result,roundCounter);
             }
         }
     }

@@ -3,20 +3,25 @@ using System;
 namespace Tic_Tac_Toe
 {
     public interface IBoard
-    {
-        void PrintBoard(char[] boardArray);
+    { 
+        void PrintBoard();
+        char[] GetBoardArray();
         int GetArrayIndex(string position);
-        void UpdateTokens(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer);
-        bool CheckIfPlaceIsTaken(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer);
+        void UpdateTokens(char player1, char player2, int roundCounter, int choiceOfPlayer);
+        bool CheckIfPlaceIsTaken(char player1, char player2, int roundCounter, int choiceOfPlayer);
     }
-
     public class Board : IBoard
     {
-        
-        Print _printTheMessage=new Print();
+        IPrint _printTheMessage=new Print();
 
-        public char[] BoardArray = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'};
-        public void PrintBoard(char[] boardArray)
+        private char[] BoardArray = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'};
+
+        public char[] GetBoardArray()
+        {
+            return BoardArray;
+        }
+        
+        public void PrintBoard()
         {
             Console.WriteLine("  {0}    {1}    {2}", BoardArray[1], BoardArray[2], BoardArray[3]);
             Console.WriteLine("  {0}    {1}    {2}", BoardArray[4], BoardArray[5], BoardArray[6]);
@@ -41,7 +46,7 @@ namespace Tic_Tac_Toe
             return 10;
         }
         
-        public void UpdateTokens(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer)
+        public void UpdateTokens(char player1, char player2, int roundCounter, int choiceOfPlayer)
         {
             if (choiceOfPlayer == 0)
             {
@@ -50,23 +55,23 @@ namespace Tic_Tac_Toe
                 _printTheMessage.PrintTheMessage("\n");
             }
 
-            if (choiceOfPlayer != 0 && boardArray[choiceOfPlayer] != player1 && boardArray[choiceOfPlayer] != player2 )
+            if (choiceOfPlayer != 0 && BoardArray[choiceOfPlayer] != player1 && BoardArray[choiceOfPlayer] != player2 )
             {
                 if (roundCounter % 2 == 0)
                 {
-                    boardArray[choiceOfPlayer] = player2;
+                    BoardArray[choiceOfPlayer] = player2;
                 }
 
                 else
                 {
-                    boardArray[choiceOfPlayer] = player1;
+                    BoardArray[choiceOfPlayer] = player1;
                 }
                 _printTheMessage.PrintTheMessage("Move accepted, here's the current board: ");
                 _printTheMessage.PrintTheMessage("\n");
             }
         }
 
-        public bool CheckIfPlaceIsTaken(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer)
+        public bool CheckIfPlaceIsTaken(char player1, char player2, int roundCounter, int choiceOfPlayer)
         {
             if (BoardArray[choiceOfPlayer] == player1 && choiceOfPlayer != 0 || BoardArray[choiceOfPlayer] == player2 && choiceOfPlayer != 0)
             {
