@@ -3,9 +3,9 @@ using System;
 namespace Tic_Tac_Toe
 {
     public interface IBoard
-    { 
-        void PrintBoard();
+    {     
         char[] GetBoardArray();
+        void PrintBoard();
         int GetArrayIndex(string position);
         void UpdateTokens(char player1, char player2, int roundCounter, int choiceOfPlayer);
         bool CheckIfPlaceIsTaken(char player1, char player2, int roundCounter, int choiceOfPlayer);
@@ -15,7 +15,7 @@ namespace Tic_Tac_Toe
         IPrint _printTheMessage=new Print();
 
         private char[] BoardArray = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'};
-
+        
         public char[] GetBoardArray()
         {
             return BoardArray;
