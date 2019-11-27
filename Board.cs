@@ -7,6 +7,7 @@ namespace Tic_Tac_Toe
         void PrintBoard(char[] boardArray);
         int GetArrayIndex(string position);
         void UpdateTokens(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer);
+        bool CheckIfPlaceIsTaken(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer);
     }
 
     public class Board : IBoard
