@@ -2,7 +2,15 @@ using System;
 
 namespace Tic_Tac_Toe
 {
-    public class Board {
+    public interface IBoard
+    {
+        void PrintBoard(char[] boardArray);
+        int GetArrayIndex(string position);
+        void UpdateTokens(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer);
+    }
+
+    public class Board : IBoard
+    {
         
         Print _printTheMessage=new Print();
 

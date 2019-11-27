@@ -1,8 +1,14 @@
 using System;
 
 namespace Tic_Tac_Toe
-{ 
-    public class GameRules
+{
+    public interface IGameRules
+    {
+        int CheckIfThePlayerWin(char player1, char player2, char[] boardArray);
+        void CheckIfConditionIsWinning(int result, int roundCounter, char[] boardArray);
+    }
+
+    public class GameRules : IGameRules
     {  
         Print _printTheMessage=new Print();
         public int CheckIfThePlayerWin(char player1, char player2, char[] boardArray)
