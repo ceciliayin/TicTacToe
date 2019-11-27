@@ -47,7 +47,6 @@ namespace Tic_Tac_Toe
                 roundCounter++;
                 _printTheMessage.PrintTheMessage($"Player {(roundCounter % 2) + 1} has given up for this round");
                 _printTheMessage.PrintTheMessage("\n");
-                roundCounter += 2;
             }
 
             if (choiceOfPlayer != 0 && boardArray[choiceOfPlayer] != player1 && boardArray[choiceOfPlayer] != player2 )
@@ -64,6 +63,17 @@ namespace Tic_Tac_Toe
                 _printTheMessage.PrintTheMessage("Move accepted, here's the current board: ");
                 _printTheMessage.PrintTheMessage("\n");
             }
-        } 
+        }
+
+        public bool CheckIfPlaceIsTaken(char player1, char player2, char[] boardArray, int roundCounter, int choiceOfPlayer)
+        {
+            if (BoardArray[choiceOfPlayer] == player1 && choiceOfPlayer != 0 || BoardArray[choiceOfPlayer] == player2 && choiceOfPlayer != 0)
+            {
+                _printTheMessage.PrintTheMessage("Oh no, a piece is already at this place! Try again..");
+                _printTheMessage.PrintTheMessage("\n");
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -32,14 +32,12 @@ namespace Tic_Tac_Toe
                     printTheMessage.PrintTheMessage("\n");
                     Thread.Sleep(2000);
                 }
-
-                if (newBoard.BoardArray[choiceOfPlayer] == Player1 && choiceOfPlayer != 0 || newBoard.BoardArray[choiceOfPlayer] == Player2 && choiceOfPlayer != 0)
+                
+                if (newBoard.CheckIfPlaceIsTaken(Player1, Player2, newBoard.BoardArray, roundCounter, choiceOfPlayer))
                 {
-                    printTheMessage.PrintTheMessage("Oh no, a piece is already at this place! Try again..");
-                    printTheMessage.PrintTheMessage("\n");
                     roundCounter++;
                 }
-
+                
                 newBoard.UpdateTokens(Player1, Player2, newBoard.BoardArray, roundCounter, choiceOfPlayer);
                 roundCounter++;
                 newBoard.PrintBoard(newBoard.BoardArray);
