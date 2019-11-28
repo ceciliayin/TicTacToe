@@ -9,11 +9,12 @@ namespace Tic_Tac_Toe
         private const char Player2 = 'O';
         
         public static void Main(string[] args)
-        {
-            IBoard newBoard = new Board();
+        {    
+            
             IPrint printTheMessage=new Print();
+            IBoard newBoard = new Board();
             IGameRules newGameRules= new GameRules();
-
+            
             int result;
             int roundCounter = 1;
 

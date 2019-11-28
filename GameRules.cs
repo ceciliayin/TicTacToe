@@ -10,9 +10,13 @@ namespace Tic_Tac_Toe
 
     public class GameRules : IGameRules
     {
+        private readonly IPrint _print;
         
-        IPrint _printTheMessage=new Print();
-        
+        public GameRules()
+        {
+            _print=new Print();
+        }
+
         public int CheckIfThePlayerWin(char player1, char player2, char[] boardArray)
         {    
             //check the horizontal condition
@@ -67,12 +71,12 @@ namespace Tic_Tac_Toe
         {
             if (result == 1)
             {
-                _printTheMessage.PrintTheMessage($"Well done Player {roundCounter % 2 + 1} won the game!");
+                _print.PrintTheMessage($"Well done Player {roundCounter % 2 + 1} won the game!");
             }
 
             if (result == -1)
             {
-                _printTheMessage.PrintTheMessage("Draw");
+                _print.PrintTheMessage("Draw");
             }
         }
     }

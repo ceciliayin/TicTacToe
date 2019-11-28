@@ -12,7 +12,12 @@ namespace Tic_Tac_Toe
     }
     public class Board : IBoard
     {
-        IPrint _printTheMessage=new Print();
+        private readonly IPrint _print;
+        
+        public Board()
+        {
+            _print=new Print();
+        }
 
         private char[] BoardArray = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'};
         
@@ -51,8 +56,8 @@ namespace Tic_Tac_Toe
             if (choiceOfPlayer == 0)
             {
                 roundCounter++;
-                _printTheMessage.PrintTheMessage($"Player {(roundCounter % 2) + 1} has given up for this round");
-                _printTheMessage.PrintTheMessage("\n");
+                _print.PrintTheMessage($"Player {(roundCounter % 2) + 1} has given up for this round");
+                _print.PrintTheMessage("\n");
             }
 
             if (choiceOfPlayer != 0 && BoardArray[choiceOfPlayer] != player1 && BoardArray[choiceOfPlayer] != player2 )
@@ -66,8 +71,8 @@ namespace Tic_Tac_Toe
                 {
                     BoardArray[choiceOfPlayer] = player1;
                 }
-                _printTheMessage.PrintTheMessage("Move accepted, here's the current board: ");
-                _printTheMessage.PrintTheMessage("\n");
+                _print.PrintTheMessage("Move accepted, here's the current board: ");
+                _print.PrintTheMessage("\n");
             }
         }
 
@@ -75,8 +80,8 @@ namespace Tic_Tac_Toe
         {
             if (BoardArray[choiceOfPlayer] == player1 && choiceOfPlayer != 0 || BoardArray[choiceOfPlayer] == player2 && choiceOfPlayer != 0)
             {
-                _printTheMessage.PrintTheMessage("Oh no, a piece is already at this place! Try again..");
-                _printTheMessage.PrintTheMessage("\n");
+                _print.PrintTheMessage("Oh no, a piece is already at this place! Try again..");
+                _print.PrintTheMessage("\n");
                 return true;
             }
             return false;
