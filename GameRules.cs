@@ -12,9 +12,9 @@ namespace Tic_Tac_Toe
     {
         private readonly IPrint _print;
         
-        public GameRules()
+        public GameRules(IPrint print)
         {
-            _print=new Print();
+            _print=print;
         }
 
         public int CheckIfThePlayerWin(char player1, char player2, char[] boardArray)

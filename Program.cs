@@ -12,8 +12,8 @@ namespace Tic_Tac_Toe
         {    
             
             IPrint printTheMessage=new Print();
-            IBoard newBoard = new Board();
-            IGameRules newGameRules= new GameRules();
+            IBoard newBoard = new Board(printTheMessage);
+            IGameRules newGameRules= new GameRules(printTheMessage);
             
             int result;
             int roundCounter = 1;

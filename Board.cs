@@ -14,9 +14,9 @@ namespace Tic_Tac_Toe
     {
         private readonly IPrint _print;
         
-        public Board()
+        public Board(IPrint print)
         {
-            _print=new Print();
+            _print=print;
         }
 
         private char[] BoardArray = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'};
