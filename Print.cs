@@ -2,13 +2,7 @@ using System;
 
 namespace Tic_Tac_Toe
 {
-    public interface IPrint
-    {
-        void PrintTheMessage(string message);
-        void PrintInitMessage();
-        void PrintWhichPlayerShouldPlay(int roundCounter);
-    }
-
+    
     public class Print : IPrint
     {
         public void PrintTheMessage(string message)
@@ -23,9 +17,9 @@ namespace Tic_Tac_Toe
             PrintTheMessage("Here's the current board:");
             PrintTheMessage("\n");
         }
-        public void PrintWhichPlayerShouldPlay(int roundCounter)
+        public void PrintWhichPlayerShouldPlay(int numberOfRounds)
         {
-            if (roundCounter % 2 == 0)
+            if (numberOfRounds % 2 == 0)
             {
                 PrintTheMessage("Player 2 enter a coord x,y to place your X or enter 'q' to give up: ");
             }
