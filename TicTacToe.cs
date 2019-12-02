@@ -42,7 +42,7 @@ namespace Tic_Tac_Toe
 
                 _board.UpdateBoardArray(Player1, Player2, numberOfRounds, choiceOfPlayer);
                 _board.PrintBoard();
-                gameResult = _gameRules.CheckIfThePlayerWin(Player1, Player2, _board.GetBoardArray(),numberOfRounds);
+                gameResult = _gameRules.CheckIfThePlayerWin(_board.GetBoardArray());
                 numberOfRounds++;
                 
             } while (gameResult == GameResult.None);
