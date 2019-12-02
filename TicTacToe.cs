@@ -35,7 +35,7 @@ namespace Tic_Tac_Toe
 
                 _board.CheckIfPositionIsValid(position);
 
-                if (_board.CheckIfPlaceIsTaken(Player1, Player2, numberOfRounds, choiceOfPlayer))
+                if (_board.CheckIfPlaceIsTaken(Player1, Player2,choiceOfPlayer))
                 {
                     numberOfRounds++;
                 }

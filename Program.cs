@@ -9,8 +9,7 @@ namespace Tic_Tac_Toe
         {
             IPrint print = new Print();
             IGameRules gameRules=new GameRules();
-            IBoard board= new Board(print,gameRules);
-
+            IBoard board= new Board(print);
             ITicTacToe newGame = new TicTacToe(print,board, gameRules);
             newGame.Play();
         }
