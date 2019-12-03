@@ -1,8 +1,7 @@
 using System;
 
 namespace Tic_Tac_Toe
-{
-    
+{ 
     public class Print : IPrint
     {
         public void PrintTheMessage(string message)
@@ -17,9 +16,9 @@ namespace Tic_Tac_Toe
             PrintTheMessage("Here's the current board:");
             PrintTheMessage("\n");
         }
-        public void PrintWhichPlayerShouldPlay(int numberOfRounds)
+        public void PrintWhichPlayerShouldPlay(Player currentPlayer)
         {
-            if (numberOfRounds % 2 == 0)
+            if (currentPlayer == Player.O)
             {
                 PrintTheMessage("Player 2 enter a coord x,y to place your X or enter 'q' to give up: ");
             }

@@ -4,6 +4,6 @@ namespace Tic_Tac_Toe
     {
         void PrintTheMessage(string message);
         void PrintInitMessage();
-        void PrintWhichPlayerShouldPlay(int numberOfRounds);
+        void PrintWhichPlayerShouldPlay(Player currentPlayer);
     }
 }

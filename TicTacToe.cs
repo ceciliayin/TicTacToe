@@ -3,52 +3,76 @@ using System.Threading;
 
 namespace Tic_Tac_Toe
 {
+    public enum Player
+    {
+        X,O
+    }
     public class TicTacToe : ITicTacToe
     {
-        private const char Player1 = 'X';
-        private const char Player2 = 'O';
-
         private readonly IPrint _print;
         private readonly IBoard _board;
         private readonly IGameRules _gameRules;
-
         public TicTacToe(IPrint print, IBoard board, IGameRules gameRules)
         {
             _print = print;
             _board = board;
             _gameRules = gameRules;
         }
+        
+        private Player _currentPlayer = Player.X;
+        private GameResult _gameResult = GameResult.None;
 
         public void Play()
         {
-            int numberOfRounds = 1;
-            GameResult gameResult;
+            InitializeGame();
 
-            _print.PrintInitMessage();
-            _board.PrintBoard();
-            
-            do
+            while (_gameResult == GameResult.None)
             {
-                _print.PrintWhichPlayerShouldPlay(numberOfRounds);
+                _print.PrintWhichPlayerShouldPlay(_currentPlayer);
                 string position = Console.ReadLine();
-                int choiceOfPlayer =_board.GetArrayIndex(position);
+                int choiceOfPlayer = _board.GetArrayIndex(position);
 
-                _board.CheckIfPositionIsValid(position);
+                _board.CheckIfPositionIsValid(position,_currentPlayer);
 
-                if (_board.CheckIfPlaceIsTaken(Player1, Player2,choiceOfPlayer))
+                if (_board.CheckIfPlaceIsTaken(choiceOfPlayer))
                 {
-                    numberOfRounds++;
+                    _currentPlayer = _currentPlayer == Player.X ? Player.X : Player.O;
                 }
 
-                _board.UpdateBoardArray(Player1, Player2, numberOfRounds, choiceOfPlayer);
+                _board.UpdateBoardArray(choiceOfPlayer, _currentPlayer);
                 _board.PrintBoard();
-                gameResult = _gameRules.CheckIfThePlayerWin(_board.GetBoardArray());
-                numberOfRounds++;
-                
-            } while (gameResult == GameResult.None);
+                _gameResult = _gameRules.CheckIfThePlayerWin(_board.GetBoardArray());
+                _currentPlayer = _currentPlayer == Player.X ? Player.O : Player.X;
+            }
+
+            PrintWiningMessage();
+        }
+
+        private void InitializeGame()
+        {
+            _print.PrintInitMessage();
+            _board.PrintBoard();
+        }
+
+        private void PrintWiningMessage()
+        {
+            if (_gameResult == GameResult.Win)
             {
-                _board.PrintGameResult(gameResult,numberOfRounds);
+                if (_currentPlayer == Player.X)
+                {
+                    _print.PrintTheMessage("Well done Player 2 won the game!");
+                }
+                else
+                {
+                    _print.PrintTheMessage("Well done Player 1 won the game!");
+                }
+            }
+
+            if (_gameResult == GameResult.Draw)
+            {
+                _print.PrintTheMessage("Draw");
             }
         }
     }
+    
 }

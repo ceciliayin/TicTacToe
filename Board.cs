@@ -45,7 +45,7 @@ namespace Tic_Tac_Toe
             return -1;
         }
 
-        public void CheckIfPositionIsValid(string position)
+        public void CheckIfPositionIsValid(string position,Player currentPlayer)
         {
             if (GetArrayIndex(position) == -1)
             {
@@ -55,53 +55,49 @@ namespace Tic_Tac_Toe
             }
         }
         
-        public void UpdateBoardArray(char player1, char player2, int roundCounter, int choiceOfPlayer)
+        public void UpdateBoardArray(int choiceOfPlayer,Player currentPlayer)
         {
             if (choiceOfPlayer == 0)
             {
-                roundCounter++;
-                _print.PrintTheMessage($"Player {(roundCounter % 2) + 1} has given up for this round");
-                _print.PrintTheMessage("\n");
+                if (currentPlayer == Player.X)
+                {
+                    _print.PrintTheMessage("Player 1 has given up for this round");
+                    _print.PrintTheMessage("\n");
+                    currentPlayer = Player.O;
+                }
+                else
+                {
+                    _print.PrintTheMessage("Player 2 has given up for this round");
+                    _print.PrintTheMessage("\n");
+                    currentPlayer = Player.X;
+                }
             }
 
-            if (choiceOfPlayer != 0 && _boardArray[choiceOfPlayer] != player1 && _boardArray[choiceOfPlayer] != player2 )
+            if (choiceOfPlayer != 0 && _boardArray[choiceOfPlayer] != 'X' && _boardArray[choiceOfPlayer] != 'O' )
             {
-                if (roundCounter % 2 == 0)
+                if (currentPlayer==Player.O)
                 {
-                    _boardArray[choiceOfPlayer] = player2;
+                    _boardArray[choiceOfPlayer] = 'O';
                 }
 
                 else
                 {
-                    _boardArray[choiceOfPlayer] = player1;
+                    _boardArray[choiceOfPlayer] = 'X';
                 }
                 _print.PrintTheMessage("Move accepted, here's the current board: ");
                 _print.PrintTheMessage("\n");
             }
         }
         
-        public bool CheckIfPlaceIsTaken(char player1, char player2, int choiceOfPlayer)
+        public bool CheckIfPlaceIsTaken(int choiceOfPlayer)
         {
-            if (_boardArray[choiceOfPlayer] == player1 && choiceOfPlayer != 0 || _boardArray[choiceOfPlayer] == player2 && choiceOfPlayer != 0)
+            if (_boardArray[choiceOfPlayer] == 'X' && choiceOfPlayer != 0 || _boardArray[choiceOfPlayer] == 'O' && choiceOfPlayer != 0)
             {
                 _print.PrintTheMessage("Oh no, a piece is already at this place! Try again..");
                 _print.PrintTheMessage("\n");
                 return true;
             }
             return false;
-        }
-
-        public void PrintGameResult(GameResult gameResult,int numberOfRounds)
-        {
-            if (gameResult == GameResult.Win)
-            {
-                _print.PrintTheMessage($"Well done Player {numberOfRounds % 2 + 1} won the game!");
-            }
-
-            if (gameResult == GameResult.Draw)
-            {
-                _print.PrintTheMessage("Draw");
-            }
         }
     }
 }
